@@ -1,0 +1,293 @@
+/* style.css */
+
+/* General body styles */
+body {
+    margin: 0;
+    min-height: 100vh;
+    display: flex;
+    justify-content: center; /* centers container horizontally */
+    align-items: center;     /* centers container vertically */
+    font-family: Courier, monospace, "Courier New";
+    background-color: #f5f5f5;
+  }
+
+  .gruppo-regular {
+  font-family: "Gruppo", sans-serif;
+  font-weight: 400;
+  font-style: normal;
+}
+
+  p {
+    font-family: "Gruppo", sans-serif;
+}
+
+
+  .darbai-pavadinimas {
+    position: fixed;
+    top: 0px;
+    left: 20px;
+    font-family: Arial, Helvetica, sans-serif;
+    font-weight: 900;
+    font-size: 8rem;
+    margin: 0;
+    color: #111;          /* default color */
+    cursor: pointer;      /* show pointer on hover */
+    transition: color 0.03s ease; /* smooth color change */
+}
+
+.darbai-pavadinimas:hover {
+    color: #1fe590;       /* change to blue on hover */
+}
+
+.atgal {
+    position: fixed;
+    top: 170px;
+    left: 20px;
+    font-family: Arial, Helvetica, sans-serif;
+    font-weight: 700;
+    font-size: 2rem;
+    margin: 0;
+    color: #111;          /* default color */
+    cursor: crosshair;      /* show pointer on hover */
+    transition: color 0.03s ease; /* smooth color change */
+}
+
+.atgal:hover {
+    color: #007bff;       /* change to blue on hover */
+}
+  
+  /* Container for all content */
+  .container {
+    max-width: 800px; /* platinti arba siaurinti pagrinda */
+    text-align: left; /* left-aligned text */
+    padding: 20px;
+    border: 0px solid none;
+  }
+  
+  /* Headings and paragraphs */
+  h1 {
+    margin-bottom: 10px;
+  }
+  
+  p {
+    margin-bottom: 20px;
+    color: #555;
+  }
+  
+  /* Navigation links stacked vertically */
+  .nav-links {
+    display: flex;
+    flex-direction: column;
+    gap: 10px; /* spacing between links */
+  }
+  
+  .nav-links a {
+    text-decoration: none;
+    color: #333;
+    font-weight: normal;
+    font-family: Courier, monospace, "Courier New"; /* URL-like font */
+    padding: 5px 0;
+    transition: all 0.3s;
+    border-bottom: 2px solid transparent; /* underline effect */
+  }
+
+  .three-columns {
+    display: flex;
+    gap: 20px; /* space between columns */
+    padding: 20px;
+  }
+  
+  .column {
+    flex: 1;
+    text-align: left;       /* Align all content inside column to the left */
+    background-color: none;
+    padding: 10px;
+    border: 1px solid none; /* patikrinimui borderiai */
+    border-radius: 8px;
+  }
+
+  /* Style links like buttons */
+.btn-link {
+  display: inline-block;       /* behave like a button */
+  padding: 10px 0px;
+  font-size: 1rem;
+  font-weight: bold;
+  background-color: none;
+  color: #000000;
+  text-decoration: none;
+  border-radius: 0px;
+  transition: background-color 0.3s;
+}
+
+/* Text below the link (cia tekstas po linku) */
+.btn-text {
+  color: #111;   /* dark text on light background */
+  margin-top: 10px;
+  font-family: "Gruppo", sans-serif;
+}
+
+/* Dark mode */
+body.dark-mode .btn-text {
+  color: #f5f5f5;   /* light text on dark background */
+}
+
+/* Toggle button container */
+.toggle-container {
+  text-align: center;
+  padding: 20px;
+}
+
+/* Button style */
+#theme-toggle {
+  padding: 10px 20px;
+  font-size: 1rem;
+  font-weight: light;
+  cursor: pointer;
+  background-color: transparent;
+  color: #111;
+  border: 0px solid currentColor;
+  border-radius: 0px;
+}
+
+/* Default light mode */
+body {
+  background-color: #f5f5f5;
+  color: #111;
+}
+
+/* Dark mode */
+body.dark-mode {
+  background-color: #1a1a1a;
+  color: #fff;
+}
+
+/* Optional: invert colors for columns/buttons */
+body.dark-mode .column {
+  background-color: none;
+  color: none;
+}
+
+body.dark-mode .btn-link {
+  background-color: none;
+  color: #f5f5f5;
+}
+body.dark-mode #theme-toggle {
+  color: #f5f5f5;                     /* inverted text color */
+  border-color: #fff;              /* border also inverts */
+}
+
+#model-container {
+  border: 1px solid red; 
+}
+
+/* Responsive: reduce title size on small screens */
+    
+
+    @media (max-width: 768px) {
+  .ring-wrapper {
+    width: 300px;
+    height: 300px;
+  }
+
+  .letter {
+    font-size: 28px;
+  }
+
+  .enter-btn {
+    font-size: 14px;
+    letter-spacing: 0.25em;
+  }
+}
+
+html, body {
+  margin: 0;
+  width: 100%;
+  height: 100%;
+  background: #fff;
+  font-family: Arial, Helvetica, sans-serif;
+  overflow: hidden;
+}
+
+/* ===== Scene ===== */
+.scene {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  perspective: 1200px;
+}
+
+/* ===== Ring ===== */
+.ring {
+  position: relative;
+  width: 300px;
+  height: 300px;
+  transform-style: preserve-3d;
+  /* animation: rotateRing 18s linear infinite; */
+}
+
+.ring-wrapper {
+  width: 600px;
+  height: 600px;
+}
+
+/* Letters */
+.letter {
+
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform-style: preserve-3d;
+
+  font-family: "Orbitron", sans-serif;
+  font-style: normal;
+  font-size: 80px;
+  font-weight: 700;
+  letter-spacing: 2px;
+  color: #1fe590;
+
+  transition: filter 0.3s ease;
+
+  transform-origin: center center;
+}
+
+/* ENTER */
+.enter-btn {
+  margin-top: -70px;
+  font-size: 1.1rem;
+  font-weight: bold;
+  text-decoration: none;
+  color: #1fe590;
+  padding-bottom: 16px;
+  opacity: 100%;
+  filter: blur(1px);
+}
+
+/* Rotation */
+@keyframes rotateRing {
+  from {
+    transform: rotateY(0deg) rotateX(10deg);
+  }
+  to {
+    transform: rotateY(360deg) rotateX(10deg);
+  }
+}
+
+/* MOBILE RESPONSIVE */
+    @media (max-width: 600px) {
+      .three-columns {
+        flex-direction: column; /* stack vertically */
+        gap: 10px; /* smaller gap for mobile */
+      }
+
+      .column {
+        width: 100%; /* full width on mobile */
+      }
+
+      .title {
+        font-size: 36px; /* smaller title on mobile */
+      }
+    }
+
