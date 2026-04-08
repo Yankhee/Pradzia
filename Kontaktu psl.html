@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="UTF-8">
+    <title>Kontaktai</title>
+
+    <style>
+    body {
+      margin: 0;
+      height: 100vh;
+      background: #f0f0f0;
+      overflow: hidden;
+      font-family: Arial, sans-serif;
+      position: relative;
+    }
+
+    .darbai-pavadinimas {
+      position: absolute;
+      font-size: clamp(28px, 8vw, 150px);
+      user-select: none;
+      margin: 0;
+    }
+
+    .darbai-pavadinimas:hover {
+        color: #1fe590;
+        cursor: not-allowed;
+    }
+
+    .dragging {
+      color: #1fe590;
+    }
+
+    .back {
+      font-size: 70px;
+    }
+
+  </style>
+</head>
+<body>
+
+  <h1 class="darbai-pavadinimas" style="top: 0; left: 50px;">Ignas Jankūnas</h1>
+  <h1 class="darbai-pavadinimas" style="top: 200px; left: 50px;">@yankhee</h1>
+  <h1 class="darbai-pavadinimas" style="top: 400px; left: 50px;">+370 612 98983</h1>
+  <h1 class="darbai-pavadinimas" style="top: 600px; left: 50px;">yankhee.work@gmail.com</h1>
+  <h1 class="darbai-pavadinimas" style="top: 600px; left: 50px;"></h1>
+  <h1 class="darbai-pavadinimas back" style="top: 800px; left: 50px;">Atgal</h1>
+
+   <script>
+
+    const elements = document.querySelectorAll('.darbai-pavadinimas');
+    let currentElement = null;
+    let offsetX = 0;
+    let offsetY = 0;
+    let isDragging = false;
+
+    elements.forEach(el => {
+      // Drag start
+      el.addEventListener('mousedown', (e) => {
+        const rect = el.getBoundingClientRect();
+        currentElement = el;
+        offsetX = e.clientX - rect.left;
+        offsetY = e.clientY - rect.top;
+        el.classList.add('dragging');
+        isDragging = false; // reset dragging state
+      });
+
+      // Track movement to know it's a drag
+      el.addEventListener('mousemove', () => {
+        if (currentElement) isDragging = true;
+      });
+
+      // Click action for back
+      if (el.classList.contains('back')) {
+        el.addEventListener('click', () => {
+          if (!isDragging) { // only trigger if it was a real click
+            window.history.back();
+          }
+        });
+      }
+    });
+
+    document.addEventListener('mousemove', (e) => {
+      if (!currentElement) return;
+      isDragging = true;
+      currentElement.style.left = `${e.clientX - offsetX}px`;
+      currentElement.style.top = `${e.clientY - offsetY}px`;
+    });
+
+    document.addEventListener('mouseup', () => {
+      if (currentElement) {
+        currentElement.classList.remove('dragging');
+        currentElement = null;
+        setTimeout(() => isDragging = false, 0); // reset
+      }
+    });
+  </script>
+</body>
+</html>
